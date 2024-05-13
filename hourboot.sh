@@ -2,6 +2,7 @@
 ## Edit on crontab and put the code:
 ## "*/60    *       * * *   root    /bin/hourboot.sh"
 LOG_FILE="/var/log/hourboot.log"
+HOST="google.com"
 
 function log() {
     local message=$1
@@ -12,6 +13,6 @@ function log() {
 }
 
 log "Iniciando reboot..."
-MSG=`ping -qc3 suap | grep "PING\|pack" | tr '\n' ' ' | cut -d ' ' -f 1-3,13-15,17 | sed -e 's/, /,/' -e 's/) /),/'`
+MSG=`ping -qc3 $HOST | grep "PING\|pack" | tr '\n' ' ' | cut -d ' ' -f 1-3,13-15,17 | sed -e 's/, /,/' -e 's/) /),/'`
 log "$MSG"
 log "Reiniciando!" && sleep 5 && shutdown -r now
