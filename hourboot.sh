@@ -1,5 +1,6 @@
 #!/bin/bash
-
+## Edit on crontab and put the code:
+## "*/60    *       * * *   root    /bin/hourboot.sh"
 LOG_FILE="/var/log/hourboot.log"
 
 function log() {
